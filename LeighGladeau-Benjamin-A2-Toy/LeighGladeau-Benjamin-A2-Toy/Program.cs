@@ -1,9 +1,11 @@
 ﻿namespace LeighGladeau_Benjamin_A2_Toy
+    using Raylib.Cs;
+    using System.Numerics;
 {
     public class Program
     {
         // If you need variables in the Program class (outside functions), you must mark them as static
-        static string title = "Game Title"; // Window title
+        static string ToyDemonstration = "Game Title"; // Window title
         static int screenWidth = 800; // Screen width
         static int screenHeight = 800; // Screen height
         static int targetFps = 60; // Target frames-per-second
@@ -11,9 +13,9 @@
         static void Main()
         {
             // Create a window to draw to. The arguments define width and height
-            Raylib.InitWindow(screenWidth, screenHeight, title);
+            Raylib.InitWindow(800, 600, ToyDemonstration);
             // Set the target frames-per-second (FPS)
-            Raylib.SetTargetFPS(targetFps);
+            Raylib.SetTargetFPS(60);
             // Setup your game. This is a function YOU define.
             Setup();
             // Loop so long as window should not close
