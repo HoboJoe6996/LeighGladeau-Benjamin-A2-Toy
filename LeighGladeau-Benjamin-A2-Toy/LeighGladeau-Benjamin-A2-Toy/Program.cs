@@ -15,7 +15,6 @@ public class Program
 
     static Random colors = new Color {Color.AliceBlue, Color.Black, Color.BlueViolet, Color.Crimson, Color.Honeydew, Color.LimeGreen,
     Color.Maroon, Color.MintCream, Color.Olive, Color.Pink, Color.Thistle, Color.Turquoise, Color.BlueViolet, Color.Firebrick};
-    static Random colors = new Random;
     static Vector2 mousePosition = Raylib.GetMousePosition();
 
     //Start of my program
