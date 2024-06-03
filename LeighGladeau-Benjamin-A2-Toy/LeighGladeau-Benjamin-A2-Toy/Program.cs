@@ -1,9 +1,6 @@
 ﻿namespace LeighGladeau_Benjamin_A2_Toy;
 using Raylib_cs;
-using Raylib_cs.Color;
-using System.Drawing;
 using System.Numerics;
-using System.Xml.Schema;
 
 public class Program
 {
@@ -12,9 +9,9 @@ public class Program
     static int screenWidth = 800; // Screen width
     static int screenHeight = 600; // Screen height
     static int targetFps = 60; // Target frames-per-second
-    static Random = new Random();
-    static Random colors = new Color {Color.AliceBlue, Color.Black, Color.BlueViolet, Color.Crimson, Color.Honeydew, Color.LimeGreen,
-    Color.Maroon, Color.MintCream, Color.Olive, Color.Pink, Color.Thistle, Color.Turquoise, Color.BlueViolet, Color.Firebrick};
+    
+    static Color[] colors = [ Color.Red, Color.Blue ];
+    static Random rng= new Random();
     static Vector2 mousePosition = Raylib.GetMousePosition();
 
     //Start of my program
