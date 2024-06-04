@@ -9,11 +9,34 @@ public class Program
     static int screenWidth = 800; // Screen width
     static int screenHeight = 600; // Screen height
     static int targetFps = 60; // Target frames-per-second
-    
-    static Color[] colors = [ Color.Red, Color.Blue ];
-    static Random rng= new Random();
     static Vector2 mousePosition = Raylib.GetMousePosition();
 
+    static string GetRngColor()
+    {
+        Color rngColors = [Color.Red, Color.Blue, Color.Purple, Color.Violet, Color.Orange, Color.DarkGray, Color.Gold,
+                              Color.Lime, Color.White, Color.Pink];
+        Random rng = new Random();
+        int c = rng.Next(rngColors.Length);
+        string rngColor = ((string)rngColors[c]);
+        return rngColor;
+    }
+
+    static int GetRngDimensions()
+    {
+        int rngDimensions = [posX = 0 - 800, centerX = 0 - 800, posY = 0 - 600, centerY = 0 - 600,
+                                width = 1 - 60, height = 1 - 75, radius = 1 - 60];
+        Random rng = new Random();
+        int d = rng.Next(rngDimensions.Length);
+        int rngDimension = ((int)rngDimensions[d]);
+        return rngDimension;
+    }
+    static  GetRngShapes()
+    {
+        Random rng = new Random();
+        Raylib.DrawRectangle();
+        Raylib.DrawCircle();
+        
+    }
     //Start of my program
     static void Main()
     {
@@ -46,7 +69,8 @@ public class Program
 
     static void Update()
     {
-        Vector2 mousePosition; 
+        GetRngShapes;
+        Vector2 mousePosition;
 
     }
 }
