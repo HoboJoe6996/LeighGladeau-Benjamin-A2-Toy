@@ -9,18 +9,21 @@ public class Program
     static int screenWidth = 800; // Screen width
     static int screenHeight = 600; // Screen height
     static int targetFps = 60; // Target frames-per-second
-    static Vector2 mousePosition = Raylib.GetMousePosition();
-    static bool isMouseButtonPressed = Raylib.IsMouseButtonPressed(MouseButton, button);
+    static Vector2 mousePosition;// = Raylib.GetMousePosition();
+    static bool isMouseButtonPressed;// = Raylib.IsMouseButtonPressed(MouseButton.Left);
     static Random rng = new Random();
     static int shapeCounter = 0;
     static int maxShapeCount = 60;
-    static Vector2 position = new Vector2[60];
+    static Vector2[] position;
+    static Vector2[] dimension;
+    static Color[] color;
+
+
     static Color GetRngColor()
     {
-        Color rngColors = [Color.Red, Color.Blue, Color.Purple, Color.Violet, Color.Orange, Color.DarkGray, Color.Gold,
+        Color[] rngColors = [Color.Red, Color.Blue, Color.Purple, Color.Violet, Color.Orange, Color.DarkGray, Color.Gold,
                            Color.Lime, Color.White, Color.Pink];
-        Random rng = new Random();
-        Color color = rng.Next(rngColors);
+        Color color = rngColors[rng.Next(0, rngColors.Length)];
         return color;
     }
     static Vector2 GetRandomPosition()
@@ -30,15 +33,14 @@ public class Program
         position.Y = rng.Next(0, 600);
         return position;
     }
-    static int GetRngDimensions()
+    static Vector2 GetRngDimensions()
     {
-        int width = [1, 100];
-        int height = [1, 125];
-        int rngDimensions = [width, height];
-        Random rng = new Random();
-        int dimension = rng.Next(rngDimensions);
+        int width = rng.Next(5, 150);
+        int height = rng.Next(10, 200);
+        Vector2 dimension = new Vector2(width, height);
         return dimension;
     }
+
     //Start of my program
     static void Main()
     {
@@ -65,19 +67,24 @@ public class Program
     }
     static void Setup()
     {
-        Vector2[] position;
-        Vector2[] dimension;
-        Color[] color;
+        position = new Vector2[maxShapeCount];
+        dimension = new Vector2[maxShapeCount];
+        color = new Color[maxShapeCount];
     }
     static void Update()
     {
-        Vector2 mousePosition;
-        if (isMouseButtonPressed = true && shapeCounter < 60)
+        isMouseButtonPressed = Raylib.IsMouseButtonPressed(MouseButton.Left);
+        if (isMouseButtonPressed == true && shapeCounter < maxShapeCount)
         {
-            Vector2 position = GetRandomPosition();
-            Vector2 dimension = GetRngDimensions();
-            Vector2 color = GetRngColor();
+            position[shapeCounter] = GetRandomPosition();
+            dimension[shapeCounter] = GetRngDimensions();
+            color[shapeCounter] = GetRngColor();
             ++shapeCounter;
+        }
+
+        for (int i = 0; i < maxShapeCount; i++ )
+        {
+            Raylib.DrawRectangleV(position[i], dimension[i], color[i]);
         }
     }
 }
