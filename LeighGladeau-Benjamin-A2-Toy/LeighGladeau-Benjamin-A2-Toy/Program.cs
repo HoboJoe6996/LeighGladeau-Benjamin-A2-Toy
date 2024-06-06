@@ -10,32 +10,34 @@ public class Program
     static int screenHeight = 600; // Screen height
     static int targetFps = 60; // Target frames-per-second
     static Vector2 mousePosition = Raylib.GetMousePosition();
-
-    static string GetRngColor()
+    static bool isMouseButtonPressed = Raylib.IsMouseButtonPressed(MouseButton, button);
+    static Random rng = new Random();
+    static int shapeCounter = 0;
+    static int maxShapeCount = 60;
+    static Vector2 position = new Vector2[60];
+    static Color GetRngColor()
     {
         Color rngColors = [Color.Red, Color.Blue, Color.Purple, Color.Violet, Color.Orange, Color.DarkGray, Color.Gold,
-                              Color.Lime, Color.White, Color.Pink];
+                           Color.Lime, Color.White, Color.Pink];
         Random rng = new Random();
-        int c = rng.Next(rngColors.Length);
-        string rngColor = ((string)rngColors[c]);
-        return rngColor;
+        Color color = rng.Next(rngColors);
+        return color;
     }
-
+    static Vector2 GetRandomPosition()
+    {
+        Vector2 position;
+        position.X = rng.Next(0, 800);
+        position.Y = rng.Next(0, 600);
+        return position;
+    }
     static int GetRngDimensions()
     {
-        int rngDimensions = [posX = 0 - 800, centerX = 0 - 800, posY = 0 - 600, centerY = 0 - 600,
-                                width = 1 - 60, height = 1 - 75, radius = 1 - 60];
+        int width = [1, 100];
+        int height = [1, 125];
+        int rngDimensions = [width, height];
         Random rng = new Random();
-        int d = rng.Next(rngDimensions.Length);
-        int rngDimension = ((int)rngDimensions[d]);
-        return rngDimension;
-    }
-    static  GetRngShapes()
-    {
-        Random rng = new Random();
-        Raylib.DrawRectangle();
-        Raylib.DrawCircle();
-        
+        int dimension = rng.Next(rngDimensions);
+        return dimension;
     }
     //Start of my program
     static void Main()
@@ -61,16 +63,21 @@ public class Program
         // Close the window
         Raylib.CloseWindow();
     }
-
     static void Setup()
     {
-        // Your one-time setup code here
+        Vector2[] position;
+        Vector2[] dimension;
+        Color[] color;
     }
-
     static void Update()
     {
-        GetRngShapes;
         Vector2 mousePosition;
-
+        if (isMouseButtonPressed = true && shapeCounter < 60)
+        {
+            Vector2 position = GetRandomPosition();
+            Vector2 dimension = GetRngDimensions();
+            Vector2 color = GetRngColor();
+            ++shapeCounter;
+        }
     }
 }
